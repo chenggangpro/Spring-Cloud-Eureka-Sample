@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  security:
+    user:
+      name: eureka_server
+      password: eureka_server
+eureka:
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+  client:
+    registry-fetch-interval-seconds: 5
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:9001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:9002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:9003/eureka/

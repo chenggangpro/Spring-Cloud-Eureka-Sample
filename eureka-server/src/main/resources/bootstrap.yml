@@ -1,0 +1,80 @@
+server:
+  port: 9001
+spring:
+  application:
+    name: eureka-server-1
+  profiles: server-1
+  security:
+    user:
+      name: eureka_server
+      password: eureka_server
+eureka:
+  server:
+    peer-node-read-timeout-ms: 3000
+    peer-node-connect-timeout-ms: 1000
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 5000
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+  client:
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:9002/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:9003/eureka/
+---
+server:
+  port: 9002
+spring:
+  application:
+    name: eureka-server-2
+  profiles: server-2
+  security:
+    user:
+      name: eureka_server
+      password: eureka_server
+eureka:
+  server:
+    peer-node-read-timeout-ms: 3000
+    peer-node-connect-timeout-ms: 1000
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 5000
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+  client:
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:9001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:9003/eureka/
+---
+server:
+  port: 9003
+spring:
+  application:
+    name: eureka-server-3
+  profiles: server-3
+  security:
+    user:
+      name: eureka_server
+      password: eureka_server
+eureka:
+  server:
+    peer-node-read-timeout-ms: 3000
+    peer-node-connect-timeout-ms: 1000
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 5000
+  instance:
+    prefer-ip-address: true
+    lease-renewal-interval-in-seconds: 10
+    lease-expiration-duration-in-seconds: 30
+  client:
+    registry-fetch-interval-seconds: 5
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:9001/eureka/,http://${spring.security.user.name}:${spring.security.user.password}@127.0.0.1:9002/eureka/
